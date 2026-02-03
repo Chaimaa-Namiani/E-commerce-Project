@@ -1,0 +1,171 @@
+html {
+    background-color:  rgb(130, 50, 130);
+    color: rgb(235, 232, 232);
+}
+.flex {
+    display: flex;
+    justify-content: space-between; /*justify is to replace things in (oben unten oder links rechts)*/   
+}
+header {   
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Distributes elements evenly */
+        position: relative;
+}
+  
+nav {
+    padding-right: 50px;
+    display: flex;
+    gap: 100%; 
+}
+
+.imgside{
+    width: 70px;
+}
+main {
+    margin-top:0px;
+    padding: 50px;
+    margin-left: 6%;
+     
+}
+.book-details .IT-img {
+    width: 25%;
+    height: 10%;
+    margin-top: 2%;
+   
+}
+a {
+    color: rgb(235, 232, 232);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    color: plum;
+ }
+
+.cart-item-count {
+  position: absolute;
+  background: red;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 2px 6px;
+  display: none;
+ 
+}
+
+
+.book-details {
+    display: flex;
+    /* justify-content: center; */
+    column-gap: 72px;
+}
+.book-details img {
+    width: 302px;
+    height: auto;
+}
+.detail-two p {
+    color: rgb(195, 190, 190)
+}
+/* .detail-two label {
+    margin-top: 11px;
+}  */
+
+.addwish {
+   display: flex;
+   /* justify-content: space-around; */
+   column-gap: 40px;
+   padding-top: 22px;
+   padding-left: 0;
+}
+.addwish button {
+    background-color: rgb(161, 35, 161);
+    text-align: center;
+    border-radius: 22px;
+    border: solid #ead6d6;
+    padding: 5px;
+    width: 250px;
+    border: none;
+    outline: none;
+    font-weight: 700;
+    box-shadow: 0 0 2px;
+    cursor: pointer;
+    color: white;
+
+
+}
+.addwish a {
+    background-color: rgb(161, 35, 161);
+    text-align: center;
+    border-radius: 22px;
+    border: solid #ead6d6;
+    padding: 5px;
+    width: 250px;
+    border: none;
+    outline: none;
+    font-weight: 700;
+    box-shadow: 0 0 2px;
+    cursor: pointer;
+
+}
+.addwish i {
+    padding: 5px;
+}
+.addwish button:hover {
+    text-decoration: underline;
+    color: plum;
+ }
+ /* Common style for badge */
+.cart-item-count,
+.wishlist-item-count {
+  position: absolute;
+  top: -10px;
+  right: -11px;
+  background-color:  rgb(209, 92, 209); /* change red to purple */
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block; /* hide when 0 */
+}
+
+/* Make sure the parent <a> is positioned relative */
+.cart-icon,
+.wishlist-icon {
+  position: relative;
+  display: inline-block;
+}
+
+/* quantity */
+.quantity-container {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+.quantity-container input {
+    text-align: center;   
+    padding-left: 9px;
+    width: 150px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+   
+}
+  .quantity-btn {
+    display: block;
+    background-color: #000;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 4px;
+    user-select: none;
+  }
+
+  
+
+

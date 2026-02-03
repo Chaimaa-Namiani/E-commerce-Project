@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>It Ends With Us</title>
+    <link rel="stylesheet" href="card.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://icons8.com/icon/84881/heart"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <!-- <i class="bx bxs-cart">
+  <span class="cart-item-count">0</span>
+</i> -->
+
+      <img src="pro4.jpg" alt="" class="imgside" />
+      <nav>
+        <a href="selected.html" class="cart-icon">
+          <!-- <i class="ri-shopping-bag-line"></i> -->
+          <i class="bx bxs-cart"></i>
+          <span class="cart-item-count">0</span>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="book-details">
+        <img src="IT.jpg" alt="It Ends With Us" class="IT-img" />
+        <div class="detail-two">
+          <p class="title1">by Colleen Hoover</p>
+          <h1>It Ends With Us</h1>
+          <p class="prix">22.00€</p>
+          <label for="y">Quantity</label>
+          <div class="quantity-container">
+            <button onClick="decreaseCount(event, this)" class="quantity-btn">
+              -
+            </button>
+            <input
+              type="number"
+              name="Quantity"
+              id="Quantity"
+              value="1"
+              readonly
+            />
+            <button onClick="increaseCount(event, this)" class="quantity-btn">
+              +
+            </button>
+          </div>
+          <div class="addwish">
+            <button id="addToCartBtn">
+              <i class="bx bxs-cart"></i> Add to cart
+            </button>
+            <!-- <input type="number" id="Quantity" value="1" min="1"> -->
+          </div>
+          <div class="description">
+            <h2>Descreption</h2>
+            <p>Sometimes it is the one who loves you who hurts you the most.</p>
+            <p>
+              Lily hasn’t always had it easy, but that’s never stopped her from
+              working hard for the life she wants. She’s come a long way from
+              the small town in Maine where she grew up — she graduated from
+              college, moved to Boston, and started her own business. So when
+              she feels a spark with a gorgeous neurosurgeon named Ryle Kincaid,
+              everything in Lily’s life suddenly seems almost too good to be
+              true. Ryle is assertive, stubborn, maybe even a little arrogant.
+              He’s also sensitive, brilliant, and has a total soft spot for
+              Lily. And the way he looks in scrubs certainly doesn’t hurt. Lily
+              can’t get him out of her head. But Ryle’s complete aversion to
+              relationships is disturbing. Even as Lily finds herself becoming
+              the exception to his “no dating” rule, she can’t help but wonder
+              what made him that way in the first place. As questions about her
+              new relationship overwhelm her, so do thoughts of Atlas Corrigan —
+              her first love and a link to the past she left behind. He was her
+              kindred spirit, her protector. When Atlas suddenly reappears,
+              everything Lily has built with Ryle is threatened.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- <script>src = "jaS.js"</script> -->
+    <script type="text/javascript">
+      function increaseCount(a, b) {
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        input.value = value;
+      }
+      function decreaseCount(a, b) {
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10);
+        if (value > 1) {
+          value = isNaN(value) ? 0 : value;
+          value--;
+          input.value = value;
+        }
+      }
+
+      const productData = {
+        id: "it-ends-with-us",
+        title: "It Ends With Us",
+        price: 22,
+        image: "IT.jpg",
+      };
+
+      // ========= CART =========
+      const addToCartBtn = document.getElementById("addToCartBtn");
+      const cartBadge = document.querySelector(".cart-item-count");
+      let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+
+      // Update cart number (counts DIFFERENT books)
+      function updateCartBadge() {
+        cartBadge.textContent = cart.length;
+        cartBadge.style.display = cart.length > 0 ? "inline-block" : "none";
+      }
+      updateCartBadge();
+
+      // Add to Cart button click
+
+      // if (!exists) {
+      //   cart.push(productData);
+      //   sessionStorage.setItem("cart", JSON.stringify(cart));
+      // }
+      addToCartBtn.addEventListener("click", () => {
+        const qty = parseInt(document.getElementById("Quantity").value, 10);
+
+        const exists = cart.some((item) => item.id === productData.id);
+
+        if (!exists) {
+          cart.push({
+            id: productData.id,
+            title: productData.title,
+            price: productData.price,
+            image: productData.image,
+            quantity: qty,
+            total: productData.price * qty,
+          });
+        } else {
+          // If product already exists, update quantity & total
+          cart = cart.map((item) =>
+            item.id === productData.id
+              ? {
+                  ...item,
+                  quantity: item.quantity + qty,
+                  total: (item.quantity + qty) * item.price,
+                }
+              : item,
+          );
+        }
+
+        sessionStorage.setItem("cart", JSON.stringify(cart));
+        updateCartBadge();
+      });
+
+     
+
+    </script>
+  </body>
+</html>

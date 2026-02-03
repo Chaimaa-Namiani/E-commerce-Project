@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="selected.css" />
+    <title>Add To Cart</title>
+
+    <link
+  href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+  rel="stylesheet"
+/> 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <img src="pro4.jpg" alt="" class="imgside" />
+      <nav>
+        <a href="selected.html" class="cart-icon">
+        <i class="ri-shopping-bag-line"></i>
+        <span class="cart-item-count"></span></a>
+      </nav>
+      <div class="back"><a href="card.html">Go back</a></div>
+    </header>
+    <main>
+    <div class="Add">
+      <div class="Add-header">
+        <span>Product</span>
+        <span>Price</span>
+        <span>Quantity</span>
+        <span>Total</span>
+        <span>Remove</span>
+      </div>
+
+       <!-- <div class="Add-items"></div> -->
+      <div class="Add-items"></div>
+          <!--<div class="Add-item">
+         
+          <div class="product">
+            <img
+              src="../books/IT.jpg"
+              alt="It Ends With Us"
+              class="product-img"
+            />
+            <div class="product-details">
+              <p>It Ends With Us</p>
+            </div>
+          </div>
+          <div class="product-price">
+            <p>22,00 €</p>
+          </div>
+         
+          <div class="product-quantity">
+            <input type="number" value="1" min="1" />
+          </div>
+         
+          <div class="product-total">
+            <p>22,00 €</p>
+          </div>
+         
+          <div>
+            <button class="remove-btn">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div> -->
+ 
+      <div class="total">
+        <h3>Delivery fee: <span class="fee">00,0€</span></h3>
+        <h3>Total: <span class="last-total">00,0€</span></h3>
+      </div>
+    </div>
+  </main>
+
+    <script>
+      function attachQuantityEvents() {
+  const qtyInputs = document.querySelectorAll(".product-quantity input");
+
+  qtyInputs.forEach(input => {
+    input.addEventListener("change", () => {
+      const index = input.dataset.index;
+      let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+      
+      let newQty = parseInt(input.value);
+      if (newQty < 1) newQty = 1;
+
+      cart[index].quantity = newQty;
+      cart[index].total = cart[index].price * newQty;
+
+      sessionStorage.setItem("cart", JSON.stringify(cart));
+
+      loadCart(); // reload totals
+    });
+  });
+}
+
+      document.querySelector(".cart-item-count").style.display = "none";
+     document.addEventListener("DOMContentLoaded", loadCart);
+
+function loadCart() {
+  const cartItemsContainer = document.querySelector(".Add-items");
+  const totalPriceEl = document.querySelector(".last-total");
+
+  let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+  cartItemsContainer.innerHTML = ""; // Clear previous items
+
+  let finalTotal = 0;
+  // Show empty message
+  if (cart.length === 0) {
+    
+    cartItemsContainer.innerHTML = `<p class="empty-cart">The cart is empty.</p>`;
+    totalPriceEl.textContent = "0 €";
+    return; // Exit function
+  }
+  cart.forEach((item, index) => {
+    const total = item.price * item.quantity;
+ // != quantity = 1 for now
+    finalTotal += total;
+
+
+    const productHTML = `
+  <div class="Add-item">
+    <div class="product">
+      <img src="${item.image}" class="product-img">
+         </div>
+
+    <div class="product-price"><p>${item.price},00 €</p></div>
+
+    <div class="product-quantity">
+      <input type="number" value="${item.quantity}" min="1" data-index="${index}">
+    </div>
+
+    <div class="product-total"><p>${item.price * item.quantity},00 €</p></div>
+
+   
+      <button class="remove-btn" data-index="${index}">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+   
+  </div>
+`;
+
+    cartItemsContainer.insertAdjacentHTML("beforeend", productHTML);
+  });
+
+  totalPriceEl.textContent = finalTotal + " €";
+
+  attachRemoveEvents();
+  attachQuantityEvents();
+  updateCartHeaderBadge(cart.length);
+}
+
+// Remove button
+function attachRemoveEvents() {
+  document.querySelectorAll(".remove-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+      const index = btn.dataset.index;
+      cart.splice(index, 1);
+      sessionStorage.setItem("cart", JSON.stringify(cart));
+      loadCart();
+    });
+  });
+}
+
+// Quantity change
+function attachQuantityEvents() {
+  document.querySelectorAll(".product-quantity input").forEach(input => {
+    input.addEventListener("change", () => {
+      let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+      const index = input.dataset.index;
+      const quantity = parseInt(input.value) || 1;
+      cart[index].quantity = quantity;
+      sessionStorage.setItem("cart", JSON.stringify(cart));
+      loadCart();
+    });
+  });
+}
+
+// Update cart badge in header
+function updateCartHeaderBadge(count) {
+  const badge = document.querySelector(".cart-item-count");
+  badge.textContent = count;
+  badge.style.display = count ? "inline-block" : "none";
+}
+    </script>
+  </body>
+</html>
+  
+
+
+
+
+ 
+
+ 
+
