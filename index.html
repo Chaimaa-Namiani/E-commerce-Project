@@ -17,14 +17,9 @@
   </head>
   <body>
     <header>
-      <!-- <i class="bx bxs-cart">
-  <span class="cart-item-count">0</span>
-</i> -->
-
       <img src="pro.jpg" alt="" class="imgside" />
       <nav>
         <a href="selected.html" class="cart-icon">
-          <!-- <i class="ri-shopping-bag-line"></i> -->
           <i class="bx bxs-cart"></i>
           <span class="cart-item-count">0</span>
         </a>
@@ -58,7 +53,6 @@
             <button id="addToCartBtn">
               <i class="bx bxs-cart"></i> Add to cart
             </button>
-            <!-- <input type="number" id="Quantity" value="1" min="1"> -->
           </div>
           <div class="description">
             <h2>Descreption</h2>
@@ -70,17 +64,16 @@
               college, moved to Boston, and started her own business. So when
               she feels a spark with a gorgeous neurosurgeon named Ryle Kincaid,
               everything in Lily’s life suddenly seems almost too good to be
-              true. Ryle is assertive, stubborn, maybe even a little arrogant.
-              He’s also sensitive, brilliant, and has a total soft spot for
-              Lily. And the way he looks in scrubs certainly doesn’t hurt. Lily
-              can’t get him out of her head. But Ryle’s complete aversion to
-              relationships is disturbing. Even as Lily finds herself becoming
-              the exception to his “no dating” rule, she can’t help but wonder
-              what made him that way in the first place. As questions about her
-              new relationship overwhelm her, so do thoughts of Atlas Corrigan —
-              her first love and a link to the past she left behind. He was her
-              kindred spirit, her protector. When Atlas suddenly reappears,
-              everything Lily has built with Ryle is threatened.
+              true. Ryle is sensitive, brilliant, and has a total soft spot for
+              Lily. Lily can’t get him out of her head. But Ryle’s complete
+              aversion to relationships is disturbing. Even as Lily finds
+              herself becoming the exception to his “no dating” rule, she can’t
+              help but wonder what made him that way in the first place. As
+              questions about her new relationship overwhelm her, so do thoughts
+              of Atlas Corrigan — her first love and a link to the past she left
+              behind. He was her kindred spirit, her protector. When Atlas
+              suddenly reappears, everything Lily has built with Ryle is
+              threatened.
             </p>
           </div>
         </div>
@@ -123,13 +116,6 @@
         cartBadge.style.display = cart.length > 0 ? "inline-block" : "none";
       }
       updateCartBadge();
-
-      // Add to Cart button click
-
-      // if (!exists) {
-      //   cart.push(productData);
-      //   sessionStorage.setItem("cart", JSON.stringify(cart));
-      // }
       addToCartBtn.addEventListener("click", () => {
         const qty = parseInt(document.getElementById("Quantity").value, 10);
 
@@ -156,13 +142,9 @@
               : item,
           );
         }
-
         sessionStorage.setItem("cart", JSON.stringify(cart));
         updateCartBadge();
       });
-
-     
-
     </script>
   </body>
 </html>
