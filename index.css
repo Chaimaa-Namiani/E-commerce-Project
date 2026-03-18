@@ -2,31 +2,43 @@ html {
     background-color:  rgb(130, 50, 130);
     color: rgb(235, 232, 232);
 }
+* {
+    box-sizing: border-box;
+}
 .flex {
     display: flex;
-    justify-content: space-between; /*justify is to replace things in (oben unten oder links rechts)*/   
+    justify-content: space-between; 
 }
 header {   
         display: flex;
         align-items: center;
-        justify-content: space-between; /* Distributes elements evenly */
+        justify-content: space-between;
         position: relative;
+        padding: 10px 15px;
 }
   
 nav {
     padding-right: 50px;
     display: flex;
-    gap: 100%; 
+    gap: 20px;
 }
 
 .imgside{
-    width: 70px;
+    width: 50px;
 }
 main {
-    margin-top:0px;
-    padding: 50px;
-    margin-left: 6%;
+     margin: 0;
+    padding: 0 15px;
      
+}
+.book-details {
+    display: flex;
+    column-gap: 72px;
+}
+.book-details img {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
 }
 .book-details .IT-img {
     width: 25%;
@@ -53,29 +65,13 @@ a:hover {
   display: none;
  
 }
-
-
-.book-details {
-    display: flex;
-    /* justify-content: center; */
-    column-gap: 72px;
-}
-.book-details img {
-    width: 302px;
-    height: auto;
-}
 .detail-two p {
     color: rgb(195, 190, 190)
 }
-/* .detail-two label {
-    margin-top: 11px;
-}  */
-
 .addwish {
    display: flex;
-   /* justify-content: space-around; */
    column-gap: 40px;
-   padding-top: 22px;
+   padding-top: 10px;
    padding-left: 0;
 }
 .addwish button {
@@ -127,10 +123,9 @@ a:hover {
   padding: 2px 6px;
   font-size: 12px;
   font-weight: bold;
-  display: inline-block; /* hide when 0 */
+  /* display: inline-block;  */
 }
 
-/* Make sure the parent <a> is positioned relative */
 .cart-icon,
 .wishlist-icon {
   position: relative;
@@ -139,7 +134,6 @@ a:hover {
 
 /* quantity */
 .quantity-container {
-    margin-top: 5px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -147,7 +141,8 @@ a:hover {
 .quantity-container input {
     text-align: center;   
     padding-left: 9px;
-    width: 150px;
+    width: 100%;
+    max-width: 150px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -166,6 +161,31 @@ a:hover {
     user-select: none;
   }
 
-  
+@media (min-width: 1024px) {
+
+    nav {
+        gap: 60px;
+    }
+
+    main {
+        margin-left: 6%;
+        padding: 0;
+    }
+
+    .book-details {
+        gap: 72px;
+    }
+
+    .book-details img {
+        width: 302px;
+    }
+
+    .addwish button,
+    .addwish a {
+        width: 250px;
+    }
+     }
+
+
 
 
