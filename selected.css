@@ -2,6 +2,9 @@ html {
     background-color:  rgb(130, 50, 130);
     color: rgb(235, 232, 232);
 }
+* {
+    box-sizing: border-box;
+}
 .flex { 
     display: flex;
     justify-content: space-between; 
@@ -31,11 +34,11 @@ color: #aba4a4;
    
 }  
 .imgside{
-    width: 70px; 
+    width: 50px; 
     
 }
 .Add {
-     padding: 30px; 
+     padding: 15px; 
     display: border; 
     align-items: bottom; }
  .Add-header {
@@ -57,34 +60,14 @@ color: #aba4a4;
          padding: 7px 0; 
         border-bottom: 1px solid white; 
         justify-content: flex-start;
-  gap: 25px; 
+        gap: 25px; 
     }
-
-
-    /* .Add-header,
-.Add-item {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
-    align-items: center;
-    text-align: center;
-    padding: 10px 0;
-}
-
-.Add-header {
-    font-size: larger;
-    font-weight: bolder;
-    border-bottom: 1px solid rgb(195, 190, 190);
-}
-
 .Add-item {
     border-bottom: 1px solid white;
     padding: 15px 0;
 }
- */
-
-
 .Add-item .product{
-          flex: 2.3; /*distance entre item childs */
+          flex: 2.3; 
         align-items: left;
       display: flex;
      align-items: center;
@@ -95,11 +78,7 @@ color: #aba4a4;
             display: flex;
             align-items: center;  
         } 
-
-
-        
-
-           .Add-item .product-quantity input{ 
+.Add-item .product-quantity input{ 
             width: 40px;
              padding: 5px;
               border: 1px solid #ccc; 
@@ -113,31 +92,16 @@ color: #aba4a4;
     height: auto;
     margin-right: 15px;
 }
-/* .Add-item .product-details {
-    align-items: center;
-    gap: 10px;
-   
-}
-.Add-item .product-details p{
-    width:103px;;
-    font-size: 87%;
-} */
-
 .Add-item .remove-btn {
     background: none;
     border: none;
-     /* display: flex; */
-  /* align-items: bottom; */
   height: 20px;
   flex: 1;
-  /* margin-right:11.5em ; */
-  /* flex: 0.5;  */
   text-align: center;
     margin-right: 30px; 
 }
 .Add-item .remove-btn:hover{
     cursor: pointer;
-
 }
 .Add-item .remove-btn i {
   color: white;
@@ -172,4 +136,53 @@ font-weight: bold;
 }
 .cart-icon {
     display: none;
+}
+@media (min-width: 768px) {
+
+    .imgside {
+        width: 60px;
+    }
+
+    .Add-header {
+        display: flex;
+        font-size: 16px;
+        font-weight: bold;
+        border-bottom: 1px solid rgb(195, 190, 190);
+        padding-bottom: 10px;
+    }
+
+    .Add-header span {
+        flex: 1;
+        text-align: center;
+    }
+
+    .Add-header span:first-child {
+        flex: 2;
+        text-align: left;
+    }
+
+    .Add-item {
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .Add-item .product {
+        flex: 2;
+    }
+
+    .Add-item :is(.product-price, .product-quantity, .product-total) {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .Add-item .remove-btn {
+        flex: 0.5;
+        text-align: center;
+    }
+
+    .total {
+        width: 300px;
+        margin-left: auto;
+    }
 }
